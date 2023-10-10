@@ -43,7 +43,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "FullCustomer"
+				},
+				{
+					"name": "FCustomerOrderHeader"
 				}
 			],
 			"scriptLines": [
@@ -145,11 +148,16 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> SalesProduct",
-				"SalesCustomer, SalesCustomerAddress join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"SalesCustomer, SalesCustomerAddress join(SalesCustomer@CustomerID == SalesCustomerAddress@CustomerID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> FullCustomer",
+				"FullCustomer, SalesOrderHeader join(ERROR_FUNCTION('') == SalesOrderHeader@CustomerID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> FCustomerOrderHeader"
 			]
 		}
 	}
