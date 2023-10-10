@@ -1,0 +1,12 @@
+{
+	"name": "DBEjercicio5_HectorSalama",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=ejercicio5server.database.windows.net;initial catalog=BDejercicio5_HectorSalama;user id=HectorSalama",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEYxNEMxRjU4LTMwOEItNDE1MC1BMjdELTJBNDg1OTcwMTA3RV8yNTc5NTk1NS1lZDE1LTQwOTUtYjhlZi1lYTZhZTQwZThlMWQiDQp9"
+		}
+	}
+}
