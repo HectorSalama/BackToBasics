@@ -182,7 +182,7 @@
 				"     broadcast: 'auto')~> FCFOProduct",
 				"FCFOProduct split(DueDate==ShipDate,",
 				"     disjoint: false) ~> split1@(DueDateisShipDate, DueDateisnotShipDate)",
-				"split1@DueDateisShipDate exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"split1@DueDateisShipDate, FCFOProduct exists(split1@DueDateisShipDate@CustomerID == SalesCustomer@CustomerID,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1"
 			]
