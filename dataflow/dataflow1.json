@@ -61,7 +61,7 @@
 					"name": "DueDateisShipDate"
 				},
 				{
-					"name": "exists2"
+					"name": "DueDateisnotShipDate"
 				}
 			],
 			"scriptLines": [
@@ -190,7 +190,7 @@
 				"     broadcast: 'auto')~> DueDateisShipDate",
 				"split1@DueDateisnotShipDate, FCFOProduct exists(split1@DueDateisnotShipDate@CustomerID == SalesCustomerAddress@CustomerID,",
 				"     negate:false,",
-				"     broadcast: 'auto')~> exists2"
+				"     broadcast: 'auto')~> DueDateisnotShipDate"
 			]
 		}
 	}
