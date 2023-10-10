@@ -47,6 +47,9 @@
 				},
 				{
 					"name": "FCustomerOrderHeader"
+				},
+				{
+					"name": "FCustomerFullOrder"
 				}
 			],
 			"scriptLines": [
@@ -153,11 +156,16 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> FullCustomer",
-				"FullCustomer, SalesOrderHeader join(ERROR_FUNCTION('') == SalesOrderHeader@CustomerID,",
+				"FullCustomer, SalesOrderHeader join(SalesCustomer@CustomerID == SalesOrderHeader@CustomerID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> FCustomerOrderHeader"
+				"     broadcast: 'auto')~> FCustomerOrderHeader",
+				"FCustomerOrderHeader, SalesOrderDetail join(SalesOrderHeader@SalesOrderID == ERROR_FUNCTION(''),",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> FCustomerFullOrder"
 			]
 		}
 	}
