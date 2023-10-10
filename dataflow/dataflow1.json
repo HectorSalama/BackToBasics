@@ -53,6 +53,12 @@
 				},
 				{
 					"name": "FCFOProduct"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "exists1"
 				}
 			],
 			"scriptLines": [
@@ -173,7 +179,12 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> FCFOProduct"
+				"     broadcast: 'auto')~> FCFOProduct",
+				"FCFOProduct split(DueDate==ShipDate,",
+				"     disjoint: false) ~> split1@(DueDateisShipDate, DueDateisnotShipDate)",
+				"split1@DueDateisShipDate exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists1"
 			]
 		}
 	}
