@@ -50,6 +50,9 @@
 				},
 				{
 					"name": "FCustomerFullOrder"
+				},
+				{
+					"name": "FCFOProduct"
 				}
 			],
 			"scriptLines": [
@@ -161,11 +164,16 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> FCustomerOrderHeader",
-				"FCustomerOrderHeader, SalesOrderDetail join(SalesOrderHeader@SalesOrderID == ERROR_FUNCTION(''),",
+				"FCustomerOrderHeader, SalesOrderDetail join(SalesOrderHeader@SalesOrderID == SalesOrderDetail@SalesOrderID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> FCustomerFullOrder"
+				"     broadcast: 'auto')~> FCustomerFullOrder",
+				"FCustomerFullOrder, SalesProduct join(SalesOrderDetail@ProductID == SalesProduct@ProductID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> FCFOProduct"
 			]
 		}
 	}
