@@ -58,7 +58,7 @@
 					"name": "split1"
 				},
 				{
-					"name": "exists1"
+					"name": "DueDateisShipDate"
 				},
 				{
 					"name": "exists2"
@@ -187,8 +187,8 @@
 				"     disjoint: false) ~> split1@(DueDateisShipDate, DueDateisnotShipDate)",
 				"split1@DueDateisShipDate, FCFOProduct exists(split1@DueDateisShipDate@CustomerID == SalesCustomerAddress@CustomerID,",
 				"     negate:false,",
-				"     broadcast: 'auto')~> exists1",
-				"split1@DueDateisnotShipDate, FCFOProduct exists(split1@DueDateisnotShipDate@CustomerID == ERROR_FUNCTION(''),",
+				"     broadcast: 'auto')~> DueDateisShipDate",
+				"split1@DueDateisnotShipDate, FCFOProduct exists(split1@DueDateisnotShipDate@CustomerID == SalesCustomerAddress@CustomerID,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists2"
 			]
